@@ -23,30 +23,34 @@ namespace GildedRoseKata
                     switch (rows[0])
                     {
                         case"ConjuredItem":
-                            items.Add(new ConjuredItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3])));
+                            items.Add(new ConjuredItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3]), int.Parse(rows[4])));
                             break;
                         case"AgingItem":
-                            items.Add(new AgingItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3])));
+                            items.Add(new AgingItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3]),int.Parse(rows[4])));
                             break;
                         case"LegendaryItem":
-                            items.Add(new LegendaryItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3])));
+                            items.Add(new LegendaryItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3]), int.Parse(rows[4])));
                             break;
                         case"EventItem":
-                            items.Add(new EventItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3])));
+                            items.Add(new EventItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3]), int.Parse(rows[4])));
                             break;
                         case"GenericItem":
-                            items.Add(new GenericItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3])));
+                            items.Add(new GenericItem(rows[1], int.Parse(rows[2]), int.Parse(rows[3]), int.Parse(rows[4])));
                             break;
                     }
                 }
             }
-
             return items;
         }
 
         public void saveInventory(IList<Item> items)
         {
             File.WriteAllLines(@"data.csv", items.Select(item => String.Join(item.GetType().Name, ',', item, ",")));
+        }
+        
+        public Item FindItems(string type, int quality)
+        {
+            return getInventory().FirstOrDefault(item => item.name == type && item.quality == quality);
         }
     }
 }

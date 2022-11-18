@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GildedRoseKata
 {
@@ -9,6 +10,7 @@ namespace GildedRoseKata
 
         public void saveInventory(IList<Item> items);
 
+        public Item FindItems(string type, int quality);
     }
 }
 
