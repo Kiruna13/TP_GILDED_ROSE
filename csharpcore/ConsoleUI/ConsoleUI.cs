@@ -35,6 +35,12 @@ namespace consoleUI
                         itemRepository.getInventory();
                         break;
                     case "5":
+                        AfficherLesArticles();
+                        Console.WriteLine("sur quel article souhaitez vous enchérir ?");
+                        string idArticle = Console.ReadLine();
+                        shop.bidItem(itemRepository.getInventory().ElementAt(int.Parse(idArticle) - 1).name, itemRepository.getInventory().ElementAt(int.Parse(idArticle) - 1).quality);
+                        break;
+                    case "6":
                         
                         break;
                 }
@@ -48,7 +54,9 @@ namespace consoleUI
             Console.WriteLine("2) Affichez le solde du magasin");
             Console.WriteLine("3) Lancer une mise à jour des articles ");
             Console.WriteLine("4) Vendre un article");
-            Console.WriteLine("5) Quitter");
+            Console.WriteLine("5) Créer une vente aux enchers");
+            Console.WriteLine("6) Quitter");
+
             Console.WriteLine("Entrez le numéro correspondant à votre choix :");
             
         }
